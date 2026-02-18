@@ -39,6 +39,8 @@ body {
 
 .container {
   text-align: center;
+  width: 90%; /* Ensure content doesn't hit screen edges */
+  max-width: 1200px;
 }
 
 .title {
@@ -54,6 +56,14 @@ body {
   justify-content: center;
   align-items: flex-start;
   gap: 1rem;
+  flex-wrap: wrap; /* Allows blocks to wrap if they run out of space */
+}
+
+.time-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 80px;
 }
 
 .time-block span:first-child {
@@ -79,13 +89,6 @@ body {
   color: #7a7a7a;
 }
 
-.footer p:first-child {
-  border: 1px solid #7a7a7a;
-  display: inline-block;
-  padding: 0.2rem 0.5rem;
-  margin-bottom: 0.5rem;
-}
-
 .bottom-buttons {
   position: absolute;
   bottom: 2rem;
@@ -102,5 +105,37 @@ body {
   padding: 0.5rem 1rem;
   border-radius: 20px;
   cursor: pointer;
-  transition: all 0.3s;
+}
+
+/* --- MOBILE RESPONSIVENESS --- */
+@media (max-width: 768px) {
+  .title {
+    font-size: 1.5rem;
+    letter-spacing: 0.1em;
+  }
+
+  .time-block span:first-child {
+    font-size: 2.5rem; /* Smaller numbers for mobile */
+  }
+
+  .separator {
+    font-size: 2.5rem;
+    display: none; /* Hide colons on very small screens to save space */
+  }
+
+  .countdown {
+    gap: 0.5rem;
+  }
+
+  .time-block {
+    min-width: 60px;
+  }
+
+  .bottom-buttons {
+    left: 50%;
+    transform: translateX(-50%); /* Center buttons on mobile */
+    align-items: center;
+    width: 100%;
+    bottom: 1rem;
+  }
 }
